@@ -51,7 +51,9 @@ extension RegisterViewController: VIPController {
         navigationItem.titleView?.tintColor = .white
         router = RegisterRouter(viewController: viewController)
         let presenter = RegisterPresenter()
-        presenter.stateHandler = handleState
+        presenter.stateHandler = { [weak self] state in
+            self?.handleState(state)
+        }
         interactor = RegisterInteractor(presenter: presenter)
     }
 }

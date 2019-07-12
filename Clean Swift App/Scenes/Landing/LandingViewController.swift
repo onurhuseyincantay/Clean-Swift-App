@@ -75,7 +75,9 @@ extension LandingViewController: VIPController {
         navigationItem.title = "Landing"
         router = LandingRouter(viewController: viewController)
         let presenter = LandingPresenter()
-        presenter.stateHandler = handleState
+        presenter.stateHandler = { [weak self] state in
+            self?.handleState(state)
+        }
         interactor = LandingInteractor(presenter: presenter)
         prepareLandingView()
     }

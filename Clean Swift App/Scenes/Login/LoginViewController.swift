@@ -80,7 +80,9 @@ extension LoginViewController: VIPController {
         navigationItem.titleView?.tintColor = .white
         router = LoginRouter(viewController: viewController)
         let presenter = LoginPresenter()
-        presenter.stateHandler = handleState
+        presenter.stateHandler = { [weak self] state in
+            self?.handleState(state)
+        }
         prepareLoginContainer()
         interactor = LoginInteractor(presenter: presenter)
     }
