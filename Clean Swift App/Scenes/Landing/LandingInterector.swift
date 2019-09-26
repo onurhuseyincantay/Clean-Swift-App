@@ -14,17 +14,12 @@ protocol Interactable {
     
     var presenter: Presenter? { get }
     
-    init(presenter: Presenter)
 }
 
 class LandingInteractor: Interactable {
     typealias Presenter = LandingPresenter
     
     var presenter: LandingPresenter?
-    
-    required init(presenter: LandingPresenter) {
-        self.presenter = presenter
-    }
 }
 
 extension LandingInteractor {

@@ -30,8 +30,4 @@ class LoginRouter: Routeable {
     typealias Destination = LoginDestination
     
     var viewController: UIViewController?
-    
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
 }

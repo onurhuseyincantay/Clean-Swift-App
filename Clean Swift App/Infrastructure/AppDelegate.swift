@@ -26,7 +26,7 @@ private extension AppDelegate {
     func prepareRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: LandingViewController())
+        let navigationController = UINavigationController(rootViewController: LandingViewController(router: LandingRouter(), interactor: LandingInteractor()))
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.tintColor = .white

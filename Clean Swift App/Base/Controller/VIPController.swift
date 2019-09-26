@@ -18,13 +18,16 @@ protocol VIPController: UIViewController  {
     var containerView: ContainerView { get }
     
     /// Router Class that is going to route the ViewController
-    var router: Router? { get }
+    var router: Router { get }
     
     /// Interactor which handles the interaction
-    var interactor: Interactor? { get }
+    var interactor: Interactor { get }
     
-    /// Basic initialization setup
-    func setup()
+    
+    /// Initializes the viewController with Provided Router and Interactor Classes
+    /// - Parameter router: Routable
+    /// - Parameter interactor: Interactable
+    init(router: Router, interactor: Interactor)
     
     /// State Handler fucntion which will handle presenters state
     ///

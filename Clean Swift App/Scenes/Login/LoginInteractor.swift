@@ -11,11 +11,6 @@ class LoginInteractor: Interactable {
     typealias Presenter = LoginPresenter
     
     var presenter: LoginPresenter?
-    
-    required init(presenter: LoginPresenter) {
-        self.presenter = presenter
-    }
-
 }
 
 extension LoginInteractor {

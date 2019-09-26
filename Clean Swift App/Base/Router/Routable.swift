@@ -50,11 +50,6 @@ protocol Routeable {
     ///
     /// - Parameter animated: animation type
     func popViewController(animated: Bool)
-    
-    /// required initializer
-    ///
-    /// - Parameter viewController: viewController which is going to be the owner of the router
-    init(viewController: UIViewController)
 }
 
 extension Routeable {

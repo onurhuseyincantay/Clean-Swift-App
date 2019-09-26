@@ -24,8 +24,4 @@ class RegisterRouter: Routeable {
     typealias Destination = RegisterDestination
     
     var viewController: UIViewController?
-    
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
 }

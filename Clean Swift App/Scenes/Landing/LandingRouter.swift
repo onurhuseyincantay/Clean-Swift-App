@@ -16,19 +16,14 @@ enum LandingDestination: DestionationType {
     var destinationViewController: UIViewController {
         switch self {
         case .login:
-            return LoginViewController()
+            return LoginViewController(router: LoginRouter(), interactor: LoginInteractor())
         case .register:
-            return RegisterViewController()
+            return RegisterViewController(router: RegisterRouter(), interactor: RegisterInteractor())
         }
     }
 }
 
 class LandingRouter: Routeable {
-    
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-    
     typealias Destination = LandingDestination
     
     var viewController: UIViewController?

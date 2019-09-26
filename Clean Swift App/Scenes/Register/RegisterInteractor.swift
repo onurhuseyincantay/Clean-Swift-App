@@ -12,9 +12,4 @@ class RegisterInteractor: Interactable {
     typealias Presenter = RegisterPresenter
     
     var presenter: RegisterPresenter?
-    
-    required init(presenter: RegisterPresenter) {
-        self.presenter = presenter
-    }
-    
 }

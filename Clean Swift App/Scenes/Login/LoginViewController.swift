@@ -8,25 +8,33 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, VIPController {
     typealias Router = LoginRouter
     typealias Interactor = LoginInteractor
     typealias ContainerView = LoginView
     
     internal var containerView = LoginView()
-    internal var router: LoginRouter?
-    internal var interactor: LoginInteractor?
+    internal var router: LoginRouter
+    internal var interactor: LoginInteractor
     
     // MARK: - Object LifeCyle
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+    required init(router: LoginRouter, interactor: LoginInteractor) {
+        self.router = router
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+        let presenter = LoginPresenter()
+        presenter.stateHandler = { [weak self] state in
+            self?.handleState(state)
+        }
+        self.interactor.presenter = presenter
+        self.router.viewController = self
+        prepareLoginContainer()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func loadView() {
         view = containerView
@@ -42,7 +50,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginPressed(_ sender: UIButton) {
-        interactor?.login(
+        interactor.login(
             with: containerView.emailTextField.text,
             password: containerView.passwordTextField.text
         )
@@ -50,13 +58,13 @@ class LoginViewController: UIViewController {
 }
 
 // MARK: - VIPController
-extension LoginViewController: VIPController {
+extension LoginViewController {
     func handleState(_ state: PresentationState<LoginState, LoginError>) {
         switch state {
         case .value(let valueType):
             switch valueType {
             case .loggedIn:
-                router?.popViewController(animated: true)
+                router.popViewController(animated: true)
             }
         case .error(let errorType):
             switch errorType {
@@ -65,25 +73,12 @@ extension LoginViewController: VIPController {
             case .underlying(let error):
                 print(error.localizedDescription)
             case .credentialError(let credentialError):
-                router?.present(with: .credentialErrorAlert(credentialError), animated: true, completion: nil)
+                router.present(with: .credentialErrorAlert(credentialError), animated: true, completion: nil)
             }
         case .idle:
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         case .loading:
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-    }
-    
-    func setup() {
-        let viewController = self
-        navigationItem.title = "Login"
-        navigationItem.titleView?.tintColor = .white
-        router = LoginRouter(viewController: viewController)
-        let presenter = LoginPresenter()
-        presenter.stateHandler = { [weak self] state in
-            self?.handleState(state)
-        }
-        prepareLoginContainer()
-        interactor = LoginInteractor(presenter: presenter)
     }
 }

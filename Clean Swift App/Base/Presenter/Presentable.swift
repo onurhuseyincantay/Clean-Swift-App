@@ -9,12 +9,13 @@
 import Foundation
 
 protocol Presentable{
+    typealias StateType = ((PresentationState<ValueState,ErrorState>) -> Void)?
     /// Value State
     associatedtype ValueState
     /// Error State
     associatedtype ErrorState: Error
     /// state handler completion block
-    var stateHandler: ((PresentationState<ValueState,ErrorState>) -> Void)? { get set }
+    var stateHandler: StateType { get set }
     /// current state of the Presentable Object
     var currentState: PresentationState<ValueState,ErrorState> { get }
 }
