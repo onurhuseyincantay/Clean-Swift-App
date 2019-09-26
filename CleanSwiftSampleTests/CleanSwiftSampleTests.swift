@@ -1,13 +1,12 @@
 //
-//  LoginUserInteractorTests.swift
-//  StandAppTests
+//  CleanSwiftSampleTests.swift
+//  CleanSwiftSampleTests
 //
-//  Created by Onur Hüseyin Çantay on 19.06.2019.
+//  Created by Onur Cantay on 26/09/2019.
 //  Copyright © 2019 Onur Hüseyin Çantay. All rights reserved.
 //
-
 import XCTest
-@testable import StandApp
+@testable import CleanSwiftSample
 
 class LoginUserInteractorTests: XCTestCase {
     typealias LoginPresentationState = PresentationState<LoginState,LoginError>
@@ -15,7 +14,8 @@ class LoginUserInteractorTests: XCTestCase {
     var interactor: LoginInteractor!
     override func setUp() {
         let presenter = LoginPresenter()
-        interactor = LoginInteractor(presenter: presenter)
+        interactor = LoginInteractor()
+        interactor.presenter = presenter
     }
     
     override func tearDown() {

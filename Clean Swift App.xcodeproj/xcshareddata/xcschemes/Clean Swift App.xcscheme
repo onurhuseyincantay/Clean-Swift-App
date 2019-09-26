@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F89875022B8FD62000EAE8C"
-               BuildableName = "Clean Swift App.app"
+               BuildableName = "CleanSwiftSample.app"
                BlueprintName = "Clean Swift App"
                ReferencedContainer = "container:Clean Swift App.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F89875022B8FD62000EAE8C"
-            BuildableName = "Clean Swift App.app"
+            BuildableName = "CleanSwiftSample.app"
             BlueprintName = "Clean Swift App"
             ReferencedContainer = "container:Clean Swift App.xcodeproj">
          </BuildableReference>
@@ -44,6 +44,16 @@
                BlueprintIdentifier = "8F89876422B8FD64000EAE8C"
                BuildableName = "Clean Swift AppTests.xctest"
                BlueprintName = "Clean Swift AppTests"
+               ReferencedContainer = "container:Clean Swift App.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "99F6336D233CE9EA00BAE4CA"
+               BuildableName = "CleanSwiftSampleTests.xctest"
+               BlueprintName = "CleanSwiftSampleTests"
                ReferencedContainer = "container:Clean Swift App.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F89875022B8FD62000EAE8C"
-            BuildableName = "Clean Swift App.app"
+            BuildableName = "CleanSwiftSample.app"
             BlueprintName = "Clean Swift App"
             ReferencedContainer = "container:Clean Swift App.xcodeproj">
          </BuildableReference>
@@ -81,7 +91,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F89875022B8FD62000EAE8C"
-            BuildableName = "Clean Swift App.app"
+            BuildableName = "CleanSwiftSample.app"
             BlueprintName = "Clean Swift App"
             ReferencedContainer = "container:Clean Swift App.xcodeproj">
          </BuildableReference>
